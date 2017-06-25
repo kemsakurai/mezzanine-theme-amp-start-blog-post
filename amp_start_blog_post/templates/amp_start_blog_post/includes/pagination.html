@@ -2,22 +2,22 @@
 {% if current_page.has_previous or current_page.has_next %}
 <div class="clearfix border">
 <span>{% trans "Page" %} {{ current_page.number }} {% trans "of" %} {{ current_page.paginator.num_pages }}</span>
-<div class="ml-auto border">
-	<a {% if current_page.has_previous %} href="?{{ page_var }}={{ current_page.previous_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"{% endif %} class="left btn button-narrow {% if not current_page.has_previous %} disabled{% endif %}">
-	  <svg class="icon" data-icon="chevron-left"></svg>
-	  {% trans "Previous" %}
-</a>
-</div>
-<div class="block mx-auto border"/>
-{% for page in current_page.visible_page_range %}
-<a href="?{{ page_var }}={{ page }}{% if querystring %}&{{ querystring }}{% endif %}" class="btn {% if page == current_page.number %}btn-primary bg-gray{% endif %}">{{ page }}</a>
-</div>
-<div class="mr-auto border">
-	<a {% if current_page.has_next %} href="?{{ page_var }}={{ current_page.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"{% endif %} class="right btn button-narrow{% if not current_page.has_next %} disabled{% endif %}">
-	  {% trans "Next" %}
-	  <svg class="icon" data-icon="chevron-right"></svg>
+	<div class="ml-auto border">
+		<a {% if current_page.has_previous %} href="?{{ page_var }}={{ current_page.previous_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"{% endif %} class="left btn button-narrow {% if not current_page.has_previous %} disabled{% endif %}">
+		  <svg class="icon" data-icon="chevron-left"></svg>
+		  {% trans "Previous" %}
 	</a>
-</div>
+	</div>
+{% for page in current_page.visible_page_range %}
+	<div class="block mx-auto border">
+	<a href="?{{ page_var }}={{ page }}{% if querystring %}&{{ querystring }}{% endif %}" class="btn {% if page == current_page.number %}btn-primary bg-gray{% endif %}">{{ page }}</a>
+	</div>
 {% endfor %}
+	<div class="mr-auto border">
+		<a {% if current_page.has_next %} href="?{{ page_var }}={{ current_page.next_page_number }}{% if querystring %}&{{ querystring }}{% endif %}"{% endif %} class="right btn button-narrow{% if not current_page.has_next %} disabled{% endif %}">
+		  {% trans "Next" %}
+		  <svg class="icon" data-icon="chevron-right"></svg>
+		</a>
+	</div>
 </div>
 {% endif %}
