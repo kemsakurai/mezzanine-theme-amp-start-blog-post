@@ -165,14 +165,14 @@
 <div class="flex">
 {% with blog_post.get_previous_by_publish_date as previous %}
 {% if previous %}
-<div class="flex-auto p1 border">
+<div class="flex-auto p1">
     <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
 </div>
 {% endif %}
 {% endwith %}
 {% with blog_post.get_next_by_publish_date as next %}
 {% if next %}
-<div class="flex-auto p1 border">
+<div class="flex-auto p1">
     <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
 </div>
 {% endif %}
