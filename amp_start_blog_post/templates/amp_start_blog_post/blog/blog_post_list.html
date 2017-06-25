@@ -71,7 +71,7 @@
 {% endif %}
 
 <!-- For pagination -->
-<amp-live-list id="live-list-1" data-max-items-per-page="{{settinges.BLOG_POST_PER_PAGE}}">
+<amp-live-list id="live-list-1" data-max-items-per-page="{{settings.BLOG_POST_PER_PAGE}}">
 <div items>
 {% for blog_post in blog_posts.object_list %}
 {% block blog_post_list_post_title %}
