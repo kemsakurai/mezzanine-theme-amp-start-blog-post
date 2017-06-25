@@ -137,7 +137,7 @@
 
 {% block blog_post_detail_content %}
 {% editable blog_post.content %}
-<section>
+<section class="mb2">
     {{ blog_post.content|richtext_filters|safe }}
 </section>
 {% endeditable %}
@@ -166,34 +166,36 @@
 {% endblock %}
 
 {% block blog_post_previous_next %}
-<div class="flex">
-{% with blog_post.get_previous_by_publish_date as previous %}
-{% if previous %}
-<div class="flex-auto p1">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-</div>
-{% endif %}
-{% endwith %}
-{% with blog_post.get_next_by_publish_date as next %}
-{% if next %}
-<div class="flex-auto p1">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-</div>
-{% endif %}
-{% endwith %}
-</div>
+<section class="mb2">
+    <div class="flex">
+    {% with blog_post.get_previous_by_publish_date as previous %}
+    {% if previous %}
+        <div class="flex-auto p1">
+            <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+        </div>
+    {% endif %}
+    {% endwith %}
+    {% with blog_post.get_next_by_publish_date as next %}
+    {% if next %}
+    <div class="flex-auto p1">
+        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    </div>
+    {% endif %}
+    {% endwith %}
+    </div>
+</section>
 {% endblock %}
 
 {% block blog_post_detail_related_posts %}
 {% if related_posts %}
-<div id="related-posts">
+<section id="related-posts" class="mb2">
 <h3>{% trans 'Related posts' %}</h3>
 <ul class="list-unstyled">
 {% for post in related_posts %}
      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
-</div>
+</section>
 {% endif %}
 {% endblock %}
 
