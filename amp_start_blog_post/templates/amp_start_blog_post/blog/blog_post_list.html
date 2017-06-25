@@ -70,6 +70,9 @@
     {% endif %}
 {% endif %}
 
+<!-- For pagination -->
+<amp-live-list id="live-list-1" data-max-items-per-page="{{settings.BLOG_POST_PER_PAGE}}">
+<div items>
 {% for blog_post in blog_posts.object_list %}
 {% block blog_post_list_post_title %}
 <section class="p3 mb5 mt5 border-top" id="blog-post-{{ forloop.counter }}">
@@ -147,6 +150,9 @@
 {% endfor %}
 
 {% pagination_for blog_posts %}
+</div>
+</amp-live-list>
+<!-- For pagination -->
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %}
