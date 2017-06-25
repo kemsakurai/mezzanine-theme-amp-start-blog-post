@@ -1,0 +1,53 @@
+{% load i18n pages_tags %}
+{% spaceless %}
+{% if page_branch_in_menu %}
+{% if branch_level == 0 %}
+<ul class="list-reset m0 p0 caps h5">
+    {% for page in page_branch %}
+    {% if not has_home and page.is_primary and forloop.first %}
+    <li class="ampstart-nav-item {% if on_home %} active{% endif %}">
+        <a href="{% url "home" %}">{% trans "Home" %}</a>
+    </li>
+    {% endif %}
+    {% if page.in_menu %}
+        {% if page.has_children_in_menu %}
+            <li class="ampstart-nav-item ampstart-nav-dropdown relative">
+                <!-- Start Dropdown-inline -->
+                <amp-accordion layout="container" disable-session-states="" class="ampstart-dropdown">
+                    <section>
+                    <header>{{ page.title }}</header>
+                    {% page_menu page %}
+                    </section>
+                </amp-accordion>
+                <!-- End Dropdown-inline -->
+            </li>
+        {% else %}
+            <li class="ampstart-nav-item {% if page.is_current_or_ascendant %}active{% endif %}" id="{{ page.html_id }}">
+                <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+            </li>
+        {% endif %}  
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% else %}
+<ul class="ampstart-dropdown-items list-reset m0 p0">
+    {% for page in page_branch %}
+    {% if page.in_menu %}
+    {% if page.has_children_in_menu %}
+        <li class="ampstart-dropdown-item">
+            <a href="{{ page.get_absolute_url }}" class="text-decoration-none">{{ page.title }}</a>
+            {% page_menu page %}
+        </li>
+    {% else %}
+        <li class="ampstart-dropdown-item {% if page.is_current_or_ascendant %}active{% endif %}" id="{{ page.html_id }}">
+            <a href="{{ page.get_absolute_url }}" class="text-decoration-none">{{ page.title }}</a>
+        </li>    
+    {% endif %}    
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% endif %}
+{% endif %}
+{% endspaceless %}
