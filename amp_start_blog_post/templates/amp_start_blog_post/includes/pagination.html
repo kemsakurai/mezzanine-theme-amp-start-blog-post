@@ -1,7 +1,7 @@
 {% load i18n %}
 {% if current_page.has_previous or current_page.has_next %}
 <div class="flex">
-<div class="flex-none p1 border">
+<div class="flex-auto p1 border">
 	<span>{% trans "Page" %} {{ current_page.number }} {% trans "of" %} {{ current_page.paginator.num_pages }}</span>
 </div>
 <div class="flex-none p1 border">
