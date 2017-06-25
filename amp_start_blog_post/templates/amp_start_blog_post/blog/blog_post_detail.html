@@ -95,6 +95,7 @@
 {% endblock %}
 
 {% block main %}
+<section class="mb2">
 <h1 class="mt4 pt4">{{blog_post.title}}</h1>
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
@@ -121,6 +122,7 @@
         {% endif %}
     {% endif %}
 </h5>
+</section>
 {% endblock %}
 
 {% block blog_post_detail_featured_image %}
@@ -135,7 +137,9 @@
 
 {% block blog_post_detail_content %}
 {% editable blog_post.content %}
-{{ blog_post.content|richtext_filters|safe }}
+<section>
+    {{ blog_post.content|richtext_filters|safe }}
+</section>
 {% endeditable %}
 {% endblock %}
 
