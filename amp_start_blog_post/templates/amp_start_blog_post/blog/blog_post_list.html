@@ -70,9 +70,12 @@
     {% endif %}
 {% endif %}
 
+<!-- For pagination -->
+<amp-live-list id="live-list-1" data-max-items-per-page="{{settinges.BLOG_POST_PER_PAGE}}">
+<div items>
 {% for blog_post in blog_posts.object_list %}
 {% block blog_post_list_post_title %}
-<section class="p3 mb5 mt5 border-top">
+<section class="p3 mb5 mt5 border-top" id="blog-post-{{ forloop.counter }}">
 {% editable blog_post.title %}
 <h2 class="ampstart-heading ampstart-label m0 mb3">
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
@@ -109,12 +112,9 @@
 
 {% block blog_post_list_post_content %}
 {% editable blog_post.content %}
-<p class="ampstart-initialcap">
 {{ blog_post.description_from_content|safe }}
-</p>
 {% endeditable %}
 {% endblock %}
-
 {% block blog_post_list_post_links %}
 <div class="blog-list-detail">
     {% keywords_for blog_post as tags %}
@@ -150,6 +150,9 @@
 {% endfor %}
 
 {% pagination_for blog_posts %}
+</div>
+</amp-live-list>
+<!-- For pagination -->
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %}
