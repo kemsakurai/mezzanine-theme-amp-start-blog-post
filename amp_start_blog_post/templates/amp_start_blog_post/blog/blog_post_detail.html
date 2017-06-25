@@ -95,20 +95,20 @@
 {% endblock %}
 
 {% block main %}
-<h1>{{blog_post.title}}</h1>
+<h1 class="mt4 pt4">{{blog_post.title}}</h1>
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
-<h6 class="post-meta">
+<h5 class="post-meta m1">
     {% trans "Posted by" %}:
     {% with blog_post.user as author %}
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
     {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
+</h5>
 {% endeditable %}
 {% endblock %}
 {% block blog_post_detail_commentlink %}
-<p>
+<h5 class="m1">
     {% if blog_post.allow_comments %}
         {% if settings.COMMENTS_DISQUS_SHORTNAME %}
             (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
@@ -120,7 +120,7 @@
             {% endspaceless %}</a>)
         {% endif %}
     {% endif %}
-</p>
+</h5>
 {% endblock %}
 
 {% block blog_post_detail_featured_image %}
