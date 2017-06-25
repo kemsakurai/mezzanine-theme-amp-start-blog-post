@@ -79,9 +79,20 @@
 </h2>
 {% endeditable %}
 {% endblock %}
+
+{% block %}
+{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+<section class="mb2">
+<amp-ad layout="responsive" width=300 height=250 type="adsense" data-ad-client="{{settings.AMP_GOOGLE_AD_CLIENT_ID}}" 
+data-ad-slot="{{settings.AMP_GOOGLE_AD_SLOT_ID}}">
+</amp-ad>
+</section>
+{% endif %}
+{% endblock %}
+
 {% block blog_post_list_post_metainfo %}
 {% editable blog_post.publish_date %}
-<h5 class="post-meta">
+<h5 class="post-meta mb2">
     {% trans "Posted by" %}:
     {% with blog_post.user as author %}
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
@@ -109,7 +120,9 @@
 
 {% block blog_post_list_post_content %}
 {% editable blog_post.content %}
+<section class="mb2">
 {{ blog_post.description_from_content|safe }}
+</section>
 {% endeditable %}
 {% endblock %}
 {% block blog_post_list_post_links %}

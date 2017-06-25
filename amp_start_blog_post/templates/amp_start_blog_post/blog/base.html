@@ -27,6 +27,8 @@
 <script custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" async=""></script>
 <script custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js" async=""></script>
 <script custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js" async=""></script>
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 <style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
 <noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <style amp-custom="">/*! Bassplate | MIT License | http://github.com/basscss/bassplate */
@@ -36,6 +38,9 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
+{% if settings.AMP_GOOGLE_TAG_MANGER_ID %}
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id={{settings.AMP_GOOGLE_TAG_MANGER_ID}}" data-credentials="include"></amp-analytics>
+{% endif %}
 <!-- Start Navbar -->
 <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
 <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2">☰</div>
@@ -108,7 +113,7 @@
 		{# </div> #}
 
 		{# <div class="col-md-7 middle"> #}
-		    {% block main %}{% endblock %}
+		{% block main %}{% endblock %}
 		{# </div> #}
 
 		{# <div class="col-md-3 right"> #}

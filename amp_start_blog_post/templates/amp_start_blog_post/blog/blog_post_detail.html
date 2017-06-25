@@ -125,6 +125,16 @@
 </section>
 {% endblock %}
 
+{% block %}
+{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+<section class="mb2">
+<amp-ad layout="responsive" width=300 height=250 type="adsense" data-ad-client="{{settings.AMP_GOOGLE_AD_CLIENT_ID}}" 
+data-ad-slot="{{settings.AMP_GOOGLE_AD_SLOT_ID}}">
+</amp-ad>
+</section>
+{% endif %}
+{% endblock %}
+
 {% block blog_post_detail_featured_image %}
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 <p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
