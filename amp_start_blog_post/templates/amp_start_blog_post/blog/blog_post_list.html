@@ -70,10 +70,6 @@
     {% endif %}
 {% endif %}
 
-<!-- For pagination -->
-<amp-live-list id="amp-live-list-insert-blog" data-poll-interval="15000" data-max-items-per-page="{{settings.BLOG_POST_PER_PAGE}}">
-<div items>
-<button id="live-list-update-button" update on="tap:amp-live-list-insert-blog.update" class="ampstart-btn caps">You have updates</button>
 {% for blog_post in blog_posts.object_list %}
 {% block blog_post_list_post_title %}
 <section class="p3 mb5 mt5 border-top" id="blog-post-{{ forloop.counter }}">
@@ -151,9 +147,6 @@
 {% endfor %}
 
 {% pagination_for blog_posts %}
-</div>
-</amp-live-list>
-<!-- For pagination -->
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %}
