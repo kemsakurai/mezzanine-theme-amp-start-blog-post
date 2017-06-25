@@ -98,7 +98,7 @@
 <h1 class="mt4 pt4">{{blog_post.title}}</h1>
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
-<h5 class="post-meta m1">
+<h5 class="post-meta m1 inline-block">
     {% trans "Posted by" %}:
     {% with blog_post.user as author %}
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
@@ -108,7 +108,7 @@
 {% endeditable %}
 {% endblock %}
 {% block blog_post_detail_commentlink %}
-<h5 class="m1">
+<h5 class="m1 inline-block">
     {% if blog_post.allow_comments %}
         {% if settings.COMMENTS_DISQUS_SHORTNAME %}
             (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
