@@ -40,7 +40,7 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 {% if settings.AMP_GOOGLE_TAG_MANGER_ID %}
-<amp-analytics config="https://www.googletagmanager.com/amp.json?id={{settings.AMP_GOOGLE_TAG_MANGER_ID}}" data-credentials="include"></amp-analytics>
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id={{settings.AMP_GOOGLE_TAG_MANGER_ID}}&gtm.url=SOURCE_URL"data-credentials="include"></amp-analytics>
 {% endif %}
 <!-- Start Navbar -->
 <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
