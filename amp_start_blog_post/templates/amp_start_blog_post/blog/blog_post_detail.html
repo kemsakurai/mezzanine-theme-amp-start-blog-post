@@ -128,7 +128,10 @@
 {% block google_ads %}
 {% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
 <section class="mb2">
-<amp-ad layout="responsive" width=300 height=250 type="adsense" data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
+<amp-ad layout="fixed-height"
+height=100 
+type="adsense" 
+data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
 data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
 </amp-ad>
 </section>
