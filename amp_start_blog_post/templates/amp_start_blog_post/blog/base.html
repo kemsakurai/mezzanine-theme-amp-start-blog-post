@@ -4,10 +4,11 @@
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="canonical" href="{{ request.get_full_path }}">
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
@@ -166,7 +167,7 @@
 </div>
 </footer>
 {% block footer_js %}
-{% include "includes/footer_scripts.html" %}
+{# {% include "includes/footer_scripts.html" %} #}
 {% endblock %}
 </body>
 </html>
