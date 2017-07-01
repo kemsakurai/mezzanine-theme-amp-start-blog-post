@@ -19,6 +19,11 @@ class TemplateForAMPMiddleware(MiddlewareMixin):
                 request.META["HTTP_USER_AGENT"] = "amp_start_blog_post"
             except KeyError:
                 pass
+        else:
+            try:
+                request.META["HTTP_USER_AGENT"] = "normal"
+            except KeyError:
+                pass
             # if hasattr(response, "template_name"):
             #     if not isinstance(response.template_name, Template):
             #         templates = response.template_name
