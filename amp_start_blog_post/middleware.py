@@ -16,7 +16,7 @@ class TemplateForAMPMiddleware(MiddlewareMixin):
         if url.startswith("/blog/amp/"):
         # If a device wasn't set via cookie, match user agent.
             try:
-                request.META["HTTP_USER_AGENT"] = "amp"
+                request.META["HTTP_USER_AGENT"] = "amp_start_blog_post"
             except KeyError:
                 pass
             # if hasattr(response, "template_name"):
