@@ -22,6 +22,19 @@
 {% endblock %}
 
 {% block main %}
+
+{% block blog_post_json_ld %}
+    {% load i18n mezzanine_tags mezzanine_extentions_tags %}
+    {% conv_blog_post_to_json_ld blog=blog_post as json_ld %}
+    {% if json_ld %}
+        <script type="application/ld+json">
+        {% autoescape off %}
+        {{ json_ld }}
+        {% endautoescape %}
+        </script>
+    {% endif %}
+{% endblock %}
+
 <section class="mb2">
 <h1 class="mt4 pt4">{{blog_post.title}}</h1>
 {% block blog_post_detail_postedby %}
@@ -52,7 +65,7 @@
 </section>
 {% endblock %}
 
-{% block google_ads %}
+{% block google_ads_top %}
 {% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
 <section class="mb2">
     <amp-ad layout="fixed-height"
@@ -142,6 +155,20 @@
 
 {% block blog_post_detail_comments %}
 {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+{% endblock %}
+
+{% block google_ads_bottom %}
+{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
+<section class="mb2">
+    <amp-ad layout="fixed-height"
+    height=100 
+    type="adsense" 
+    data-loading-strategy="prefer-viewability-over-views"  
+    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
+    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
+    </amp-ad>
+</section>
+{% endif %}
 {% endblock %}
 
 {% endblock %}
