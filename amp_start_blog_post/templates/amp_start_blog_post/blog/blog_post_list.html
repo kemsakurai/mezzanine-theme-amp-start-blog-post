@@ -71,7 +71,7 @@
 {% endif %}
 
 {% block google_ads_top %}
-{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
 <section class="p3 mb5 mt5 border-top">
     <amp-ad layout="fixed-height"
     height=100 
@@ -166,7 +166,7 @@
 {% endfor %}
 
 {% block google_ads_bottom %}
-{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
 <section class="p3 mb5 mt5 border-top">
     <amp-ad layout="fixed-height"
     height=100 
