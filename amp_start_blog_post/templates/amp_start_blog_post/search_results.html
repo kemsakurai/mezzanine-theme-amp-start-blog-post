@@ -11,17 +11,17 @@
 
 {% block main %}
 
-{% if results.paginator.count == 0 %}
-<section class="p3 mb5 mt15 border-top">
-{% blocktrans %}
-No results were found in {{ search_type }} matching your query: {{ query }}
-{% endblocktrans %}
-{% else %}
-{% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
-Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} matching your query: {{ query }}
-{% endblocktrans %}
+<section class="p3 mb5 mt5 border-top">
+    {% if results.paginator.count == 0 %}
+    {% blocktrans %}
+    No results were found in {{ search_type }} matching your query: {{ query }}
+    {% endblocktrans %}
+    {% else %}
+    {% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
+    Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} matching your query: {{ query }}
+    {% endblocktrans %}
+    {% endif %}
 </section>
-{% endif %}
 
 {% block google_ads_top %}
 {% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
