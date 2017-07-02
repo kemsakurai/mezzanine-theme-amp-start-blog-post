@@ -70,6 +70,19 @@
     {% endif %}
 {% endif %}
 
+{% block google_ads_top %}
+{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+<section class="p3 mb5 mt5 border-top">
+    <amp-ad layout="fixed-height"
+    height=100 
+    type="adsense" 
+    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
+    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
+    </amp-ad>
+</section>
+{% endif %}
+{% endblock %}
+
 {% for blog_post in blog_posts.object_list %}
 {% block blog_post_list_post_title %}
 <section class="p3 mb5 mt5 border-top" id="blog-post-{{ forloop.counter }}">
@@ -78,19 +91,6 @@
     <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
 </h2>
 {% endeditable %}
-{% endblock %}
-
-{% block google_ads %}
-{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
-<section class="mb2">
-<amp-ad layout="fixed-height"
-height=100 
-type="adsense" 
-data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
-data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
-</amp-ad>
-</section>
-{% endif %}
 {% endblock %}
 
 {% block blog_post_list_post_metainfo %}
@@ -164,6 +164,19 @@ data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
 </section>
 {% endblock %}
 {% endfor %}
+
+{% block google_ads_bottom %}
+{% if settings.AMP_GOOGLE_AD_CLIENT_ID and settings.AMP_GOOGLE_AD_SLOT_ID %}
+<section class="p3 mb5 mt5 border-top">
+    <amp-ad layout="fixed-height"
+    height=100 
+    type="adsense" 
+    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
+    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
+    </amp-ad>
+</section>
+{% endif %}
+{% endblock %}
 
 {% pagination_for blog_posts %}
 
