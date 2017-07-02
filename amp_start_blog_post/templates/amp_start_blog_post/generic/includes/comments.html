@@ -3,13 +3,15 @@
 <h3>{% trans "Comments" %}</h3>
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% load disqus_tags %}
-<amp-iframe width=600 height=200
-            layout="responsive"
-            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
-            resizable
-            src="https://kemsakurai.github.io/amp_disqus_thread.html#{% disqus_id_for object_for_comments %}">
-            <div overflow tabindex=0 role=button aria-label="Read more">Read more!</div>
-</amp-iframe>
+<div id="disqus_thread">
+    <amp-iframe width=600 height=200
+                layout="responsive"
+                sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+                resizable
+                src="https://kemsakurai.github.io/amp_disqus_thread.html#{% disqus_id_for object_for_comments %}">
+                <div overflow tabindex=0 role=button aria-label="Read more">Read more!</div>
+    </amp-iframe>
+</div>
 {% else %}
 {# TODO Non AMP Code #}
 <script>
