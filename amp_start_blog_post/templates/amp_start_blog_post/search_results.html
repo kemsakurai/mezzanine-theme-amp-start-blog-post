@@ -33,6 +33,8 @@ Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} mat
     data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
     </amp-ad>
 </section>
+{% endif %}
+{% endblock %}
 
 {% for result in results.object_list %}
 {% with result.get_absolute_url as result_url %}
@@ -67,6 +69,7 @@ Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} mat
 </section>
 {% endif %}
 {% endblock %}
+
 {% pagination_for results %}
 
 {% endblock %}
