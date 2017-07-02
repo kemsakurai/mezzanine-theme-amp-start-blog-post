@@ -5,7 +5,7 @@
 	{{ block.super }}
 	{% block google_ads_top %}
 	{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-	<section class="mb2">
+	<section class="p3 mb5 mt5 border-top">
 	    <amp-ad layout="fixed-height"
 	    height=100 
 	    type="adsense" 
@@ -17,8 +17,21 @@
 	{% endblock %}
 
 	{% editable page.richtextpage.content %}
-	<section class="mb2">
+	<section class="p3 mb5 mt5 border-top">
 	    {{ page.richtextpage.content|richtext_filters|to_amp_html|safe }}
 	</section>
 	{% endeditable %}
+
+	{% block google_ads_bottom %}
+	{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
+	<section class="p3 mb5 mt5 border-top">
+	    <amp-ad layout="fixed-height"
+	    height=100 
+	    type="adsense" 
+	    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
+	    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
+	    </amp-ad>
+	</section>
+	{% endif %}
+	{% endblock %}
 {% endblock %}
