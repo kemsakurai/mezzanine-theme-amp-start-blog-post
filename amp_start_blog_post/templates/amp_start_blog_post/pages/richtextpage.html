@@ -1,0 +1,24 @@
+{% extends "amp_start_blog_post/pages/page.html" %}
+{% load mezzanine_tags amp_start_blog_post_tags %}
+
+{% block main %}
+	{{ block.super }}
+	{% block google_ads_top %}
+	{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
+	<section class="mb2">
+	    <amp-ad layout="fixed-height"
+	    height=100 
+	    type="adsense" 
+	    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
+	    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
+	    </amp-ad>
+	</section>
+	{% endif %}
+	{% endblock %}
+
+	{% editable page.richtextpage.content %}
+	<section class="mb2">
+	    {{ page.richtextpage.content|richtext_filters|to_amp_html|safe }}
+	</section>
+	{% endeditable %}
+{% endblock %}
