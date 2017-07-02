@@ -18,4 +18,5 @@ def to_amp_html(html):
         amp_img["layout"] = "fixed-height"
         amp_img["height"] = "300"
         img.replace_with(amp_img)
-    return str(soup)
+    soup.body.hidden = True
+    return str(soup.body)
