@@ -51,8 +51,8 @@
     {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
     {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
     {% endblock%}
-	{#  <amp-img src="../img/blog/logo.png" width="100" height="61.3" layout="fixed" class="my0 mx-auto " 
-    {% if settings.SITE_TITLE %} alt="{{ settings.SITE_TITLE }}"{% endif %}></amp-img> #}
+	{#  <amp-img src="../img/blog/logo.png" width="100" height="61.3" layout="fixed" class="my0 mx-auto " #}
+    {# {% if settings.SITE_TITLE %} alt="{{ settings.SITE_TITLE }}"{% endif %}></amp-img>  #}
 </div>
 <div class="ml-auto">
     {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
