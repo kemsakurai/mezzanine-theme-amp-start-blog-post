@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block main %}
-
 <section class="p3 mb5 mt10 border-top">
     {% if results.paginator.count == 0 %}
     {% blocktrans %}
@@ -24,16 +23,7 @@
 </section>
 
 {% block google_ads_top %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="p3 mb5 mt5 border-top">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
-    </amp-ad>
-</section>
-{% endif %}
+{% include "includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endblock %}
 
 {% for result in results.object_list %}
@@ -58,15 +48,7 @@
 {% endfor %}
 
 {% block google_ads_bottom %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="p3 mb5 mt5 border-top">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
-    </amp-ad>
-</section>
+    {% include "includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endif %}
 {% endblock %}
 

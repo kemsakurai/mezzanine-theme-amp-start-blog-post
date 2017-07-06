@@ -71,16 +71,7 @@
 {% endif %}
 
 {% block google_ads_top %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="p3 mb5 mt5 border-top">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
-    </amp-ad>
-</section>
-{% endif %}
+{% include "includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endblock %}
 
 {% for blog_post in blog_posts.object_list %}
@@ -166,26 +157,7 @@
 {% endfor %}
 
 {% block google_ads_bottom %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="p3 mb5 mt5 border-top">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}" 
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}"> 
-    </amp-ad>
-</section>
-{% endif %}
+{% include "includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endblock %}
-
 {% pagination_for blog_posts %}
-
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{# {% include "generic/includes/disqus_counts.html" %} #}
-{% endif %}
-
-{% endblock %}
-
-{% block right_panel %}
-{% include "blog/includes/filter_panel.html" %}
 {% endblock %}

@@ -10,6 +10,8 @@ register_setting(
     default=("AMP_GOOGLE_ADS_CLIENT_ID",
              "AMP_GOOGLE_ADS_SLOT_ID",
              "AMP_GOOGLE_TAG_MANGER_ID",
+             "AMP_TWITTER_ACCOUNT_NAME",
+             "AMP_GITHUB_USER_NAME",
              ),
     append=True,
 )
@@ -31,6 +33,19 @@ register_setting(
 register_setting(
     name="AMP_GOOGLE_TAG_MANGER_ID",
     description="GOOGLE TAG MANGER ID for AMP",
+    editable=True,
+    default="",
+)
+register_setting(
+    name="AMP_TWITTER_ACCOUNT_NAME",
+    description="Twitter account name SNS link",
+    editable=True,
+    default="",
+)
+
+register_setting(
+    name="AMP_GITHUB_USER_NAME",
+    description="Github user name SNS link",
     editable=True,
     default="",
 )

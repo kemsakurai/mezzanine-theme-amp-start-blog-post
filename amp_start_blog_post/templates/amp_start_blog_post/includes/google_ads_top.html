@@ -1,0 +1,10 @@
+{% if settings.AMP_GOOGLE_ADS_CLIENT_ID_TOP and settings.AMP_GOOGLE_ADS_SLOT_ID_TOP %}
+<section class="{{ section_class }}">
+    <amp-ad layout="fixed-height"
+    height=100 
+    type="adsense" 
+    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID_TOP}}"  
+    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID_TOP}}">
+    </amp-ad>
+</section>
+{% endif %}

@@ -72,15 +72,7 @@
 {% endblock %}
 
 {% block google_ads_top %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="mb2">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
-    </amp-ad>
-</section>
+{% include "includes/google_ads_top.html" with section_class="mb2" %}
 {% endif %}
 {% endblock %}
 
@@ -89,10 +81,6 @@
 <p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
 {% endif %}
 {% endblock %}
-
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{# {% include "generic/includes/disqus_counts.html" %} #}
-{% endif %}
 
 {% block blog_post_detail_content %}
 {% editable blog_post.content %}
@@ -163,15 +151,7 @@
 {% endblock %}
 
 {% block google_ads_bottom %}
-{% if settings.AMP_GOOGLE_ADS_CLIENT_ID and settings.AMP_GOOGLE_ADS_SLOT_ID %}
-<section class="mb2">
-    <amp-ad layout="fixed-height"
-    height=100 
-    type="adsense" 
-    data-ad-client="{{settings.AMP_GOOGLE_ADS_CLIENT_ID}}"  
-    data-ad-slot="{{settings.AMP_GOOGLE_ADS_SLOT_ID}}">
-    </amp-ad>
-</section>
+{% include "includes/google_ads_bottom.html" with section_class="mb2" %}
 {% endif %}
 {% endblock %}
 

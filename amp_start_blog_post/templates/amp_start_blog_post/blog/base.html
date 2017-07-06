@@ -37,42 +37,9 @@
 /* codehilite */
 .codehilite .hll{background-color:#49483e}.codehilite{background:#272822;color:#f8f8f2}.codehilite .c{color:#75715e}.codehilite .err{color:#960050;background-color:#1e0010}.codehilite .k{color:#66d9ef}.codehilite .l{color:#ae81ff}.codehilite .n{color:#f8f8f2}.codehilite .o{color:#f92672}.codehilite .p{color:#f8f8f2}.codehilite .c1,.codehilite .cm,.codehilite .cp,.codehilite .cs{color:#75715e}.codehilite .gd{color:#f92672}.codehilite .ge{font-style:italic}.codehilite .gi{color:#a6e22e}.codehilite .gs{font-weight:700}.codehilite .gu{color:#75715e}.codehilite .kc,.codehilite .kd{color:#66d9ef}.codehilite .kn{color:#f92672}.codehilite .kp,.codehilite .kr,.codehilite .kt{color:#66d9ef}.codehilite .ld{color:#e6db74}.codehilite .m{color:#ae81ff}.codehilite .s{color:#e6db74}.codehilite .na{color:#a6e22e}.codehilite .nb{color:#f8f8f2}.codehilite .nc{color:#a6e22e}.codehilite .no{color:#66d9ef}.codehilite .nd{color:#a6e22e}.codehilite .ni{color:#f8f8f2}.codehilite .ne,.codehilite .nf{color:#a6e22e}.codehilite .nl,.codehilite .nn{color:#f8f8f2}.codehilite .nx{color:#a6e22e}.codehilite .py{color:#f8f8f2}.codehilite .nt{color:#f92672}.codehilite .nv{color:#f8f8f2}.codehilite .ow{color:#f92672}.codehilite .w{color:#f8f8f2}.codehilite .mb,.codehilite .mf,.codehilite .mh,.codehilite .mi,.codehilite .mo{color:#ae81ff}.codehilite .s2,.codehilite .sb,.codehilite .sc,.codehilite .sd{color:#e6db74}.codehilite .se{color:#ae81ff}.codehilite .s1,.codehilite .sh,.codehilite .si,.codehilite .sr,.codehilite .ss,.codehilite .sx{color:#e6db74}.codehilite .bp,.codehilite .vc,.codehilite .vg,.codehilite .vi{color:#f8f8f2}.codehilite .il{color:#ae81ff}
 /* codehilite -- selector prefixed to the wrapper div for collision prevention */
-.codehilite pre code * {
-  white-space: nowrap
-}
-.codehilite pre {
-  overflow-x: auto
-}
-.codehilite pre code {
-  white-space: pre
-}
+.codehilite pre code *{white-space:nowrap}.codehilite pre{overflow-x:auto}.codehilite pre code{white-space:pre}
 /* Basscss Color Tables */
-table {
- border-collapse:separate;
- border-spacing:0;
- max-width:100%;
- width:100%;
- margin-top: 10px;
- margin-bottom: 20px
-}
-th {
- text-align:left;
- font-weight:500
- border-bottom-width:1px;
- border-bottom-style:solid;
- border-bottom-color:rgba(0,0,0,.125);
- padding:.25rem 1rem;
- line-height:inherit;
- vertical-align:bottom
-}
-td {
- border-bottom-width:1px;
- border-bottom-style:solid;
- border-bottom-color:rgba(0,0,0,.125);
- padding:.25rem 1rem;
- line-height:inherit;
- vertical-align:top
-}
+td,th{border-bottom-style:solid;border-bottom-color:rgba(0,0,0,.125);padding:.25rem 1rem;line-height:inherit}table{border-collapse:separate;border-spacing:0;max-width:100%;width:100%;margin-top:10px;margin-bottom:20px}th{text-align:left;font-weight:500 border-bottom-width:1px;vertical-align:bottom}td{border-bottom-width:1px;vertical-align:top}
 </style>
 {% endblock %}
 </head>
@@ -105,14 +72,7 @@ td {
   <nav class="ampstart-sidebar-nav ampstart-nav">
     {% block navbar_dropdown_menu %}{% page_menu "amp_start_blog_post/pages/menus/dropdown.html" %}{% endblock%}
   </nav>
-    <ul class="ampstart-social-follow list-reset flex justify-around items-center flex-wrap m0 mb4">
-    <li class="mr2">
-        <a href="https://twitter.com/monotalk_xyz" target="_blank" class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="22.2" viewbox="0 0 53 49"><title>Twitter</title><path d="M45 6.9c-1.6 1-3.3 1.6-5.2 2-1.5-1.6-3.6-2.6-5.9-2.6-4.5 0-8.2 3.7-8.2 8.3 0 .6.1 1.3.2 1.9-6.8-.4-12.8-3.7-16.8-8.7C8.4 9 8 10.5 8 12c0 2.8 1.4 5.4 3.6 6.9-1.3-.1-2.6-.5-3.7-1.1v.1c0 4 2.8 7.4 6.6 8.1-.7.2-1.5.3-2.2.3-.5 0-1 0-1.5-.1 1 3.3 4 5.7 7.6 5.7-2.8 2.2-6.3 3.6-10.2 3.6-.6 0-1.3-.1-1.9-.1 3.6 2.3 7.9 3.7 12.5 3.7 15.1 0 23.3-12.6 23.3-23.6 0-.3 0-.7-.1-1 1.6-1.2 3-2.7 4.1-4.3-1.4.6-3 1.1-4.7 1.3 1.7-1 3-2.7 3.6-4.6" class="ampstart-icon ampstart-icon-twitter"></path></svg></a>
-    </li>
-    <li class="mr2">
-        <a href="https://github.com/kemsakurai" target="_blank" class="inline-block" aria-label="Link to AMP Start Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 64.000000 64.000000"><title>Github</title><path d="M22.4 1.4C-.8 9-7.4 38.4 10.5 54.9 14.7 58.8 20.4 62 23 62c.5 0 1-1.6 1-3.5 0-3.3-.2-3.5-3.5-3.5-3.5 0-4.2-.5-9-6.6-4.4-5.6-2.3-6.2 3.2-.9 4.2 4 7.5 4.5 9.8 1.2 1.4-2.1 1.4-2.2-.7-3-6-2.3-8.8-4.2-10.2-7.2-2.1-4.3-2.1-12.4 0-15.3.8-1.2 1.2-2.7.9-3.2-1-1.6.5-7 1.8-7 .7 0 2.4.6 3.8 1.4 1.7.9 6 1.4 11.9 1.4s10.2-.5 11.9-1.4c1.4-.8 3.1-1.4 3.8-1.4 1.3 0 2.8 5.4 1.8 7-.3.5.1 2 .9 3.2 1.8 2.5 2.1 10.3.7 14.1-1.4 3.6-5 6.6-9.3 7.8-3.3.9-3.7 1.2-2.8 2.9.5 1 1 4.6 1 7.9 0 3.5.4 6.1 1 6.1 5.2 0 15.8-8.8 19.8-16.5 2.3-4.3 2.7-6.3 2.7-13.5 0-7-.4-9.4-2.4-13.5C57.9 12.2 51.8 6 45.6 3 39.6.2 28.5-.6 22.4 1.4z" class="ampstart-icon"></path></svg></a>
-    </li>
-</ul>
+{% include "includes/sns_link.html" %}
 </amp-sidebar>
 <!-- End Sidebar -->
 <!-- End Navbar -->
@@ -139,11 +99,8 @@ td {
 
 <div class="container">
 <div class="row">
-        <ul class="ampstart-social-follow list-reset flex justify-around items-center flex-wrap m0 mb4">
-            <li class="mr2"><a href="https://twitter.com/monotalk_xyz" target="_blank" class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="22.2" viewbox="0 0 53 49"><title>Twitter</title><path d="M45 6.9c-1.6 1-3.3 1.6-5.2 2-1.5-1.6-3.6-2.6-5.9-2.6-4.5 0-8.2 3.7-8.2 8.3 0 .6.1 1.3.2 1.9-6.8-.4-12.8-3.7-16.8-8.7C8.4 9 8 10.5 8 12c0 2.8 1.4 5.4 3.6 6.9-1.3-.1-2.6-.5-3.7-1.1v.1c0 4 2.8 7.4 6.6 8.1-.7.2-1.5.3-2.2.3-.5 0-1 0-1.5-.1 1 3.3 4 5.7 7.6 5.7-2.8 2.2-6.3 3.6-10.2 3.6-.6 0-1.3-.1-1.9-.1 3.6 2.3 7.9 3.7 12.5 3.7 15.1 0 23.3-12.6 23.3-23.6 0-.3 0-.7-.1-1 1.6-1.2 3-2.7 4.1-4.3-1.4.6-3 1.1-4.7 1.3 1.7-1 3-2.7 3.6-4.6" class="ampstart-icon ampstart-icon-twitter"></path></svg></a></li>
-            <li class="mr2"><a href="https://github.com/kemsakurai" target="_blank" class="inline-block" aria-label="Link to AMP Start Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 64.000000 64.000000"><title>Github</title><path d="M22.4 1.4C-.8 9-7.4 38.4 10.5 54.9 14.7 58.8 20.4 62 23 62c.5 0 1-1.6 1-3.5 0-3.3-.2-3.5-3.5-3.5-3.5 0-4.2-.5-9-6.6-4.4-5.6-2.3-6.2 3.2-.9 4.2 4 7.5 4.5 9.8 1.2 1.4-2.1 1.4-2.2-.7-3-6-2.3-8.8-4.2-10.2-7.2-2.1-4.3-2.1-12.4 0-15.3.8-1.2 1.2-2.7.9-3.2-1-1.6.5-7 1.8-7 .7 0 2.4.6 3.8 1.4 1.7.9 6 1.4 11.9 1.4s10.2-.5 11.9-1.4c1.4-.8 3.1-1.4 3.8-1.4 1.3 0 2.8 5.4 1.8 7-.3.5.1 2 .9 3.2 1.8 2.5 2.1 10.3.7 14.1-1.4 3.6-5 6.6-9.3 7.8-3.3.9-3.7 1.2-2.8 2.9.5 1 1 4.6 1 7.9 0 3.5.4 6.1 1 6.1 5.2 0 15.8-8.8 19.8-16.5 2.3-4.3 2.7-6.3 2.7-13.5 0-7-.4-9.4-2.4-13.5C57.9 12.2 51.8 6 45.6 3 39.6.2 28.5-.6 22.4 1.4z" class="ampstart-icon"></path></svg></a></li>
-        </ul>
-      <small>Copyright © Monotalk All Rights Reserved.</small>
+{% include "includes/sns_link.html" %}
+<small>Copyright © Monotalk All Rights Reserved.</small>
 </div>
 </div>
 </footer>
