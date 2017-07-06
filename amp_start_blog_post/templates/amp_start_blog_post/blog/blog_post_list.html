@@ -71,7 +71,7 @@
 {% endif %}
 
 {% block google_ads_top %}
-{% include "includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
+{% include "amp_start_blog_post/includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endblock %}
 
 {% for blog_post in blog_posts.object_list %}
@@ -157,7 +157,7 @@
 {% endfor %}
 
 {% block google_ads_bottom %}
-{% include "includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
+{% include "amp_start_blog_post/includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
 {% endblock %}
 {% pagination_for blog_posts %}
 {% endblock %}
