@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from mezzanine import template
 from bs4 import BeautifulSoup
+from PIL import Image
+import requests
 
 register = template.Library()
 
@@ -15,8 +17,10 @@ def to_amp_html(html):
         amp_img = soup.new_tag("amp-img")
         for attr in img.attrs:
             amp_img[attr] = img[attr]
-        amp_img["layout"] = "fixed-height"
-        amp_img["height"] = "300"
+        im = Image.open(requests.get(img.src, stream=True).raw)
+        amp_img["width"] = im.size[0]
+        amp_img["height"] = im.size[1]
+        amp_img["layout"] = "responsive"
         img.replace_with(amp_img)
     soup.body.hidden = True
     return str(soup.body)

@@ -4,7 +4,7 @@
 {% block main %}
 	{{ block.super }}
 	{% block google_ads_top %}
-		{% include "includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
+		{% include "amp_start_blog_post/includes/google_ads_top.html" with section_class="p3 mb5 mt5 border-top" %}
 	{% endblock %}
 
 	{% editable page.richtextpage.content %}
@@ -14,6 +14,6 @@
 	{% endeditable %}
 
 	{% block google_ads_bottom %}
-		{% include "includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
+		{% include "amp_start_blog_post/includes/google_ads_bottom.html" with section_class="p3 mb5 mt5 border-top" %}
 	{% endblock %}
 {% endblock %}
