@@ -17,7 +17,7 @@ def to_amp_html(html):
         amp_img = soup.new_tag("amp-img")
         for attr in img.attrs:
             amp_img[attr] = img[attr]
-        im = Image.open(requests.get(img.src, stream=True).raw)
+        im = Image.open(requests.get(img.get("src"), stream=True).raw)
         amp_img["width"] = im.size[0]
         amp_img["height"] = im.size[1]
         amp_img["layout"] = "responsive"
