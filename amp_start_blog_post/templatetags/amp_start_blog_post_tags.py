@@ -15,10 +15,12 @@ def to_amp_html(html):
     soup = BeautifulSoup(html)
     for elem in soup.find_all(True, id=lambda x: x and 'amp' in x):
         elem["id"] = elem.get("id").replace("amp", "accelerated-mobile-pages")
+
     for img in soup.find_all('img'):
         amp_img = soup.new_tag("amp-img")
         for attr in img.attrs:
-            amp_img[attr] = img[attr]
+            if "style" != attr:
+                amp_img[attr] = img[attr]
         src = str(img.get("src"))
         if src.startswith("//"):
             src = src.replace("//", "https://")
