@@ -30,7 +30,7 @@
 {% block main %}
 
 {% block blog_post_json_ld %}
-    {% load i18n mezzanine_tags mezzanine_extentions_tags %}
+    {% load i18n mezzanine_tags amp_start_blog_post_tags %}
     {% conv_blog_post_to_json_ld blog=blog_post as json_ld %}
     {% if json_ld %}
         <script type="application/ld+json">
