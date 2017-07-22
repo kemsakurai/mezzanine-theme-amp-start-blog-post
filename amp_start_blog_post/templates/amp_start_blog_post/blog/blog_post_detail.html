@@ -34,9 +34,9 @@
     {% conv_blog_post_to_json_ld blog=blog_post as json_ld %}
     {% if json_ld %}
         <script type="application/ld+json">
-        {% autoescape off %}
-        {{ json_ld }}
-        {% endautoescape %}
+            {% autoescape off %}
+            {{ json_ld }}
+            {% endautoescape %}
         </script>
     {% endif %}
 {% endblock %}
