@@ -23,6 +23,16 @@ def to_amp_html(html):
     for elem in soup.find_all(True, id=lambda x: x and 'amp' in x):
         elem["id"] = elem.get("id").replace("amp", "accelerated-mobile-pages")
 
+    # h2
+    for h2 in soup.find_all('h2'):
+        h2['class'] = h2.get('class', []) + ['bold', 'mt2', 'mb2']
+    # h3
+    for h3 in soup.find_all('h3'):
+        h3['class'] = h3.get('class', []) + ['bold', 'mt1', 'mb1']
+    # h4
+    for h4 in soup.find_all('h4'):
+        h4['class'] = h4.get('class', []) + ['bold', 'mt1', 'mb1']
+
     # ------------------------------------------------
     # img replace to amp-img
     # -----------------------------------------------
