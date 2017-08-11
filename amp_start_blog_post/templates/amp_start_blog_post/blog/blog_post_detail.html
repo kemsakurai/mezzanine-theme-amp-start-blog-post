@@ -129,7 +129,7 @@
 {% block blog_post_detail_related_posts %}
 {% if related_posts %}
 <section id="related-posts" class="mb2">
-<h3>{% trans 'Related posts' %}</h3>
+<h3 class="bold">{% trans 'Related posts' %}</h3>
 <ul class="list-unstyled">
 {% for post in related_posts %}
      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
