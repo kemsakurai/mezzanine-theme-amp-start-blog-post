@@ -44,7 +44,7 @@
 {% block main %}
 {% if tag or category or year or month or author %}
     {% block blog_post_list_filterinfo %}
-    <p>
+    <p class="mt2 bold">
     {% if tag %}
         {% trans "Viewing posts tagged" %} {{ tag }}
     {% else %}{% if category %}

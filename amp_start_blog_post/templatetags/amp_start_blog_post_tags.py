@@ -2,9 +2,12 @@ from __future__ import unicode_literals
 from mezzanine import template
 from bs4 import BeautifulSoup
 from PIL import Image
+from StringIO import StringIO
 import requests
 import json
+import logging
 
+logger = logging.getLogger(__name__)
 register = template.Library()
 
 
@@ -13,23 +16,39 @@ def to_amp_html(html):
     """
     Markdown HTML to AMP HTML
     """
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, "html5lib")
+    # ------------------------------------------------
+    # amp id replace to "accelerated-mobile-pages"
+    # ------------------------------------------------
     for elem in soup.find_all(True, id=lambda x: x and 'amp' in x):
         elem["id"] = elem.get("id").replace("amp", "accelerated-mobile-pages")
 
+    # ------------------------------------------------
+    # img replace to amp-img
+    # -----------------------------------------------
     for img in soup.find_all('img'):
-        amp_img = soup.new_tag("amp-img")
-        for attr in img.attrs:
-            if "style" != attr:
-                amp_img[attr] = img[attr]
-        src = str(img.get("src"))
-        if src.startswith("//"):
-            src = src.replace("//", "https://")
-        im = Image.open(requests.get(src, stream=True).raw)
-        amp_img["width"] = im.size[0]
-        amp_img["height"] = im.size[1]
-        amp_img["layout"] = "responsive"
-        img.replace_with(amp_img)
+        try:
+            amp_img = soup.new_tag("amp-img")
+            for attr in img.attrs:
+                if "style" != attr:
+                    amp_img[attr] = img[attr]
+            src = str(img.get("src"))
+            if src.startswith("//"):
+                src = src.replace("//", "https://")
+            req = requests.get(src)
+            picture_IO = StringIO(req.content)
+            picture_IO.seek(0)
+            im = Image.open(picture_IO)
+            amp_img["width"] = im.size[0]
+            amp_img["height"] = im.size[1]
+            amp_img["layout"] = "responsive"
+            img.replace_with(amp_img)
+        except IOError:
+            logger.warning("something raised an exception: ", exc_info=True)
+            amp_img["width"] = "4"
+            amp_img["height"] = "3"
+            amp_img["layout"] = "responsive"
+            img.replace_with(amp_img)
     soup.body.hidden = True
     return str(soup.body)
 

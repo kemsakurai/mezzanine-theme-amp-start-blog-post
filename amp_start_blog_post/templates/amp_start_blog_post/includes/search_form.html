@@ -5,26 +5,6 @@
 <div class="ampstart-input inline-block relative m1 p0 left">
   <input type="text" class="block border-none p0 m0" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.GET.q }}">
 </div>
-<!-- End Input-->
-{% if search_model_choices %}
-    {% if search_model_choices|length == 1 %}
-    <input type="hidden" name="type" value="{{ search_model_choices.0.1 }}">
-    {% else %}
-    <!-- Select -->
-    <div class="ampstart-input inline-block relative m1 p0 left">
-    <select class="block border-none  p0 m0" name="type">
-        <option value="">{% trans "Everything" %}</option>
-        {% for verbose_name, model in search_model_choices %}
-        <option value="{{ model }}"
-            {% if model == request.GET.type  %}selected{% endif %}>
-            {{ verbose_name }}
-        </option>
-        {% endfor %}
-    </select>
-    </div>
-    <!-- End Select -->
-    {% endif %}
-{% endif %}
 <div class="right">
 <input type="submit" class="ampstart-btn ampstart-btn-secondary m2 p4" value="{% trans "Go" %}">
 </div>
