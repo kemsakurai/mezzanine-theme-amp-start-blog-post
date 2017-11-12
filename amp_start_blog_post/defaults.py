@@ -7,7 +7,8 @@ register_setting(
     name="TEMPLATE_ACCESSIBLE_SETTINGS",
     description=("Sequence of setting names available within templates."),
     editable=False,
-    default=("AMP_GOOGLE_ADS_CLIENT_ID_TOP",
+    default=("AMP_GOOGLE_ADS_CLIENT_ID_OVERLAY",
+             "AMP_GOOGLE_ADS_CLIENT_ID_TOP",
              "AMP_GOOGLE_ADS_SLOT_ID_TOP",
              "AMP_GOOGLE_ADS_CLIENT_ID_BOTTOM",
              "AMP_GOOGLE_ADS_SLOT_ID_BOTTOM",
@@ -16,6 +17,13 @@ register_setting(
              "AMP_GITHUB_USER_NAME",
              ),
     append=True,
+)
+
+register_setting(
+    name="AMP_GOOGLE_ADS_CLIENT_ID_OVERLAY",
+    description="GOOGLE ADS CLIENT ID for AMP",
+    editable=True,
+    default="",
 )
 
 register_setting(
