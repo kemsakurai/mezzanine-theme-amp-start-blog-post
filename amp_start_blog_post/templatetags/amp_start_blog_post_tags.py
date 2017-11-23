@@ -32,8 +32,14 @@ def to_amp_html(html):
     # h4
     for h4 in soup.find_all('h4'):
         h4['class'] = h4.get('class', []) + ['bold', 'mt1', 'mb1']
+        
+    # -----------------------------------------------
+    # iframe replace to amp-iframe
+    # -----------------------------------------------
+    for iframe in soup.find_all('iframe'):
+        iframe.name = "amp-iframe"
 
-    # ------------------------------------------------
+    # -----------------------------------------------
     # img replace to amp-img
     # -----------------------------------------------
     for img in soup.find_all('img'):
@@ -59,6 +65,7 @@ def to_amp_html(html):
             amp_img["height"] = "3"
             amp_img["layout"] = "responsive"
             img.replace_with(amp_img)
+
     soup.body.hidden = True
     return str(soup.body)
 
