@@ -111,15 +111,17 @@
 </a>
 {% endblock %}
 {% endif %}
-
-{% block blog_post_list_post_content %}
-    {% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
+    
+{% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
+    
+    {% block blog_post_list_post_content %}
     {% editable blog_post.content %}
     <section class="mb2">
     {{ blog_post.description_from_content|to_amp_html|safe }}
     </section>
     {% endeditable %}
     {% endblock %}
+    
     {% block blog_post_list_post_links %}
     <div class="blog-list-detail">
         {% keywords_for blog_post as tags %}
@@ -154,7 +156,8 @@
         {% endif %}
         </p>
     </div>
-    {% endif %}
+    
+{% endif %}
 </section>
 {% endblock %}
 
