@@ -112,9 +112,9 @@
 {% endblock %}
 {% endif %}
 
-{% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
-    {% block blog_post_list_post_content %}
+{% block blog_post_list_post_content %}
     {% editable blog_post.content %}
+    {% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
     <section class="mb2">
     {{ blog_post.description_from_content|to_amp_html|safe }}
     </section>
@@ -153,9 +153,10 @@
         {% endif %}
         </p>
     </div>
-    </section>
-    {% endblock %}
-{% endif %}
+    {% endif %}
+</section>
+{% endblock %}
+
 {% endfor %}
 
 {% block google_ads_bottom %}
