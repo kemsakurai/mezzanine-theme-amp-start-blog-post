@@ -15,6 +15,7 @@ register_setting(
              "AMP_GOOGLE_TAG_MANGER_ID",
              "AMP_TWITTER_ACCOUNT_NAME",
              "AMP_GITHUB_USER_NAME",
+             "AMP_IS_VISIBLE_DESCRIPTION",
              ),
     append=True,
 )
@@ -69,6 +70,12 @@ register_setting(
 register_setting(
     name="AMP_GITHUB_USER_NAME",
     description="Github user name SNS link",
+    editable=True,
+    default="",
+)
+register_setting(
+    name="AMP_IS_VISIBLE_DESCRIPTION",
+    description="Visible description",
     editable=True,
     default="",
 )
