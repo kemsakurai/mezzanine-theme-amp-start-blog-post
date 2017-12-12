@@ -112,8 +112,7 @@
 {% endblock %}
 {% endif %}
     
-{% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
-    
+    {% if settings.AMP_IS_VISIBLE_DESCRIPTION %}
     {% block blog_post_list_post_content %}
     {% editable blog_post.content %}
     <section class="mb2">
@@ -156,10 +155,10 @@
         {% endif %}
         </p>
     </div>
-    
+    {% endblock %}
 {% endif %}
 </section>
-{% endblock %}
+
 
 {% endfor %}
 
