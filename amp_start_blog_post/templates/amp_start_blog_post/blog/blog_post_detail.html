@@ -44,9 +44,13 @@
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
     {% trans "in" %}
-    {% for category in categories %}
-    <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %},{% endif %}
-    {% endfor %}
+    {% with blog_post.categories.all as categories %}
+    {% if categories %}
+        {% for category in categories %}
+        <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     <time datetime="{{ blog_post.publish_date|date:"c"}}">{{ blog_post.publish_date|date:'Y-m-d' }}</time> ({% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %})
 </h5>
 {% endeditable %}
