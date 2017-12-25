@@ -99,7 +99,7 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+    <time datetime="{{ blog_post.publish_date|date:"c"}}">{{ blog_post.publish_date|date:'Y-m-d' }}</time> ({% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %})
 </h5>
 {% endeditable %}
 {% endblock %}
