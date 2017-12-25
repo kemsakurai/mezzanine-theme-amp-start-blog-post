@@ -18,6 +18,14 @@ def to_amp_html(html):
     """
     soup = BeautifulSoup(html, "html5lib")
     # ------------------------------------------------
+    # romove style & script tags
+    # ------------------------------------------------
+    [s.decompose() for s in soup('style')]
+    [s.decompose() for s in soup('script')]
+
+    remove_attrs(soup, ("style","script",))
+    
+    # ------------------------------------------------
     # amp id replace to "accelerated-mobile-pages"
     # ------------------------------------------------
     for elem in soup.find_all(True, id=lambda x: x and 'amp' in x):
@@ -69,6 +77,11 @@ def to_amp_html(html):
     soup.body.hidden = True
     return str(soup.body)
 
+def remove_attrs(soup, brack_list=tuple()):
+    for tag in soup.findAll(True):
+        for attr in [attr for attr in tag.attrs if attr in brack_list]:
+            del tag[attr]
+    return soup
 
 @register.as_tag
 def conv_blog_post_to_json_ld(blog=None):
