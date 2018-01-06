@@ -2,7 +2,10 @@ from __future__ import unicode_literals
 from mezzanine import template
 from bs4 import BeautifulSoup
 from PIL import Image
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 import requests
 import json
 import logging
