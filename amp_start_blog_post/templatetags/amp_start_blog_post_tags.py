@@ -2,10 +2,12 @@ from __future__ import unicode_literals
 from mezzanine import template
 from bs4 import BeautifulSoup
 from PIL import Image
+import six
 try:
     from StringIO import StringIO
 except ImportError:
-    from io import StringIO
+    from io import BytesIO
+    
 import requests
 import json
 import logging
@@ -63,7 +65,10 @@ def to_amp_html(html):
             if src.startswith("//"):
                 src = src.replace("//", "https://")
             req = requests.get(src)
-            picture_IO = StringIO(req.content)
+            if six.PY2:
+                picture_IO = StringIO(req.content)
+            else:
+                picture_IO = BytesIO(req.content)
             picture_IO.seek(0)
             im = Image.open(picture_IO)
             amp_img["width"] = im.size[0]
@@ -80,11 +85,13 @@ def to_amp_html(html):
     soup.body.hidden = True
     return str(soup.body)
 
+
 def remove_attrs(soup, brack_list=tuple()):
     for tag in soup.findAll(True):
         for attr in [attr for attr in tag.attrs if attr in brack_list]:
             del tag[attr]
     return soup
+
 
 @register.as_tag
 def conv_blog_post_to_json_ld(blog=None):
