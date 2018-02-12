@@ -15,7 +15,10 @@ import logging
 logger = logging.getLogger(__name__)
 register = template.Library()
 
-
+@register.filter
+def to_normal_url(url):
+    return url.replace("amp/","")
+    
 @register.filter
 def to_amp_html(html):
     """

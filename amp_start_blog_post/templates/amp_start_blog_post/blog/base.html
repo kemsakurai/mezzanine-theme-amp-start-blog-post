@@ -1,6 +1,6 @@
 <!doctype html>
 <html ⚡ lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n staticfiles %}
+{% load pages_tags mezzanine_tags i18n staticfiles amp_start_blog_post_tags %}
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -9,7 +9,7 @@
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <meta charset="utf-8">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="canonical" href="{{ request.get_full_path }}">
+<link rel="canonical" href="{{ request.get_full_path|to_normal_url }}">
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
