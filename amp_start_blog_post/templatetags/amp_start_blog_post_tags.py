@@ -7,7 +7,7 @@ try:
     from StringIO import StringIO
 except ImportError:
     from io import BytesIO
-    
+
 import requests
 import json
 import logging
@@ -30,9 +30,7 @@ def to_amp_html(html):
     # ------------------------------------------------
     [s.decompose() for s in soup('style')]
     [s.decompose() for s in soup('script')]
-
     remove_attrs(soup, ("style","script",))
-    
     # ------------------------------------------------
     # amp id replace to "accelerated-mobile-pages"
     # ------------------------------------------------
@@ -48,7 +46,7 @@ def to_amp_html(html):
     # h4
     for h4 in soup.find_all('h4'):
         h4['class'] = h4.get('class', []) + ['bold', 'mt1', 'mb1']
-        
+
     # -----------------------------------------------
     # iframe replace to amp-iframe
     # -----------------------------------------------
