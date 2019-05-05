@@ -11,6 +11,12 @@ except ImportError:
 import requests
 import json
 import logging
+try:
+    import urlparse
+    from urllib import urlencode
+except: # For Python 3
+    import urllib.parse as urlparse
+    from urllib.parse import urlencode
 
 logger = logging.getLogger(__name__)
 register = template.Library()
@@ -18,6 +24,15 @@ register = template.Library()
 @register.filter
 def to_normal_url(url):
     return url.replace("amp/","")
+
+@register.filter
+def append_amp_optimized_param(url):
+    params = {'ampOptimized':'1'}
+    url_parts = list(urlparse.urlparse(url))
+    query = dict(urlparse.parse_qsl(url_parts[4]))
+    query.update(params)
+    url_parts[4] = urlencode(query)
+    return urlparse.urlunparse(url_parts)
 
 @register.filter
 def to_amp_html(html):

@@ -32,7 +32,7 @@
     <h5>
         {{ forloop.counter0|add:results.start_index }})
         {% if result_url %}
-            <a href="{{ result_url }}">{{ result }}</a>
+            <a href="{{ result_url|append_amp_optimized_param }}">{{ result }}</a>
         {% else %}
             {{ result }}
         {% endif %}
@@ -42,7 +42,7 @@
             <p>{{ result.description|truncatewords_html:20|safe }}</p>
         {% endif %}
         {% if result_url %}
-            <a href="{{ result_url }}">{% trans "read more" %}</a>
+            <a href="{{ result_url|append_amp_optimized_param }}">{% trans "read more" %}</a>
         {% endif %}
     {% endif %}
 </section>

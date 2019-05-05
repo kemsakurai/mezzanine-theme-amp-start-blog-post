@@ -118,14 +118,14 @@
     {% with blog_post.get_previous_by_publish_date as previous %}
     {% if previous %}
         <div class="flex-auto p1">
-            <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+            <a href="{{ previous.get_absolute_url|append_amp_optimized_param }}">&larr; {{ previous }}</a>
         </div>
     {% endif %}
     {% endwith %}
     {% with blog_post.get_next_by_publish_date as next %}
     {% if next %}
     <div class="flex-auto p1">
-        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+        <a href="{{ next.get_absolute_url|append_amp_optimized_param }}">{{ next }} &rarr;</a>
     </div>
     {% endif %}
     {% endwith %}
@@ -154,7 +154,7 @@
 <h3 class="bold">{% trans 'Related posts' %}</h3>
 <ul class="list-unstyled">
 {% for post in related_posts %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+     <li><a href="{{ post.get_absolute_url|append_amp_optimized_param }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
 </section>
