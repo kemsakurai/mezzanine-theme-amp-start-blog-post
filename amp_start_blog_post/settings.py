@@ -5,7 +5,6 @@ import django
 CACHE_LOADER_NAME = 'amp_start_blog_post.loaders.CachedLoader'
 AMP_TOOLS_LOADER = 'amp_start_blog_post.loaders.Loader'
 
-
 class SettingsProxy(object):
     def __init__(self, settings, defaults):
         self.settings = settings
