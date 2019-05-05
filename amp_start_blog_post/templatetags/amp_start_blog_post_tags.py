@@ -27,11 +27,8 @@ def to_normal_url(url):
 
 @register.filter
 def append_amp_optimized_param(url):
-    params = {'ampOptimized':'1'}
     url_parts = list(urlparse.urlparse(url))
-    query = dict(urlparse.parse_qsl(url_parts[4]))
-    query.update(params)
-    url_parts[4] = urlencode(query)
+    url_parts[2] = "/ampoptimized" + url_parts[2]
     return urlparse.urlunparse(url_parts)
 
 @register.filter
