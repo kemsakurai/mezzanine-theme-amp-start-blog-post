@@ -10,9 +10,6 @@
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
 <link rel="canonical" href="{{ request.get_full_path|to_normal_url }}">
 <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
-{% ifinstalled guess %}
-	{% prefetch request.path %}
-{% endifinstalled %}
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
